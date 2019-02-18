@@ -41,7 +41,7 @@ do
 done
 ```
 
-#RNAseq
+# RNAseq
 
 I decided that it would be best to get the files out of the sub-directories they are in to simplify the paths.
 
@@ -56,7 +56,7 @@ do
 done
 ```
 
-#DNAseq
+# DNAseq
 
 Rename the sequencing center's arbitrary scheme to the biological sample's identifier.
 
