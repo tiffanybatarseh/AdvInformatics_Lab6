@@ -1,7 +1,7 @@
 # AdvInformatics_Lab6
 First lab with Tony
 
-# EE283 Lab
+# EE283 Lab Notes
 
 Determine how to organize the files.
 Determine the best way to organize it and write a script to organize them in the way that you find best.
@@ -35,13 +35,13 @@ P014_R2.fq.gz  P028_R2.fq.gz  P036_R2.fq.gz  P050_R2.fq.gz
 Then I can pair the README with the file names using:
 
 ```
-for file in  $(ls *.fq.gz)
+for i in  $(ls *.fq.gz)
 do
-  echo mv ${i} $(grep $(echo $i | cut -f1 -d"_") README.ATACseq.txt | awk '{print $2}')_$(echo $i | cut -f2 -d"_")
+  mv ${i} $(grep $($i | cut -f1 -d"_") README.ATACseq.txt | awk '{print $2"_"$3"_"$4}')_$($i | cut -f2 -d"_") 
 done
 ```
 
-# RNAseq
+#RNAseq
 
 I decided that it would be best to get the files out of the sub-directories they are in to simplify the paths.
 
@@ -49,7 +49,14 @@ I decided that it would be best to get the files out of the sub-directories they
 find /pub/tbatarse/Bioinformatics_Course/RNAseq/RNAseq384plex_flowcell01/ -type f -print0 | xargs -0 mv -t /pub/tbatarse/Bioinformatics_Course/RNAseq/
 ```
 
-# DNAseq
+```
+for i in  $(ls *.fastq.gz)
+do
+  echo mv ${i} $(grep $(echo $i | cut -f1 -d"_") RNAseq384_SampleCoding.txt | awk '{print $5"_"$8"_"$12}')_$(echo $i | cut -f4 -d"_") 
+done
+```
+
+#DNAseq
 
 Rename the sequencing center's arbitrary scheme to the biological sample's identifier.
 
